@@ -1,0 +1,186 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:controls="clr-namespace:FncControl.Controls"
+             xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+             x:Class="FncControl.Views.MainPage"
+             Title="Control"
+             Background="#0c0c0c">
+    <ContentPage.Content>
+        <Grid Rotation="{Binding Rotation}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+
+            <StackLayout>
+                <StackLayout Orientation="Horizontal"
+                         IsEnabled="{Binding TimeControlActivated}"
+                         IsVisible="{Binding TimeControlActivated}"
+                         Margin="5"
+                         VerticalOptions="Center"
+                         HorizontalOptions="Center">
+                    <Label Text="{xct:Translate TimeOtherText}"
+                       FontSize="Large"/>
+                    <Label Text="{Binding OtherPlayerTimeLabel}"
+                        FontSize="Large"/>
+                </StackLayout>
+                <BoxView HeightRequest="2.5" 
+                         BackgroundColor="{StaticResource Primary}"
+                         Margin="7.1,0,7.1,0"/>
+            </StackLayout>
+           
+
+            <controls:ContentButton Grid.Row="1"
+                                    Margin="5" Command="{Binding NextTurnCommand}">
+                <StackLayout>
+                    <StackLayout Orientation="Horizontal"
+                                 VerticalOptions="Center"
+                                 HorizontalOptions="Center"
+                                 Margin="5,5,5,15">
+                        <Label Text="{xct:Translate TurnText}"
+                               FontSize="Medium"
+                               FontAttributes="Bold"  />
+                        <Label Text="{Binding TurnCounter}"
+                               FontSize="Medium"
+                               FontAttributes="Bold"/>
+                    </StackLayout>
+
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="141"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+
+                        <Label Text="{xct:Translate TimeText}"
+                           Grid.Row="0" Grid.Column="0"
+                               Margin="5"
+                               IsVisible="{Binding TimeControlActivated}"
+                               IsEnabled="{Binding TimeControlActivated}"/>
+                        <Label Text="{Binding PlayerTimeLabel}"
+                               IsVisible="{Binding TimeControlActivated}"
+                               IsEnabled="{Binding TimeControlActivated}"
+                           Grid.Row="0" Grid.Column="1"
+                               Margin="5"
+                                FontAttributes="Bold"/>
+
+                        <Label Text="{xct:Translate NumberOfDrawText}"  Margin="5"
+                           Grid.Row="1" Grid.Column="0"
+                               IsVisible="{Binding EnableDrawing}"
+                               IsEnabled="{Binding EnableDrawing}"/>
+                        <Label Text="{Binding NumberOfDrawing}"
+                           Grid.Row="1" Grid.Column="1"  Margin="5"
+                                FontAttributes="Bold"
+                               IsVisible="{Binding EnableDrawing}"
+                               IsEnabled="{Binding EnableDrawing}"/>
+
+                        <Label Text="{xct:Translate NumberOfSpellText}"  Margin="5"
+                           Grid.Row="2" Grid.Column="0"
+                               IsVisible="{Binding EnableSpell}"
+                               IsEnabled="{Binding EnableSpell}"/>
+                        <Label Text="{Binding NumberOfSpell}"  Margin="5"
+                           Grid.Row="2" Grid.Column="1"
+                                FontAttributes="Bold"
+                                IsVisible="{Binding EnableSpell}"
+                               IsEnabled="{Binding EnableSpell}"/>
+
+                        <Label Text="{xct:Translate NumberOfSummonText}" Margin="5"
+                           Grid.Row="3" Grid.Column="0"
+                                IsVisible="{Binding EnableSummon}"
+                               IsEnabled="{Binding EnableSummon}"/>
+                        <Label Text="{Binding NumberOfSummon}" Margin="5"
+                           Grid.Row="3" Grid.Column="1"
+                                FontAttributes="Bold"
+                               IsVisible="{Binding EnableSummon}"
+                               IsEnabled="{Binding EnableSummon}"/>
+
+                        <Label Text="{xct:Translate NumberOfBuyText}" Margin="5"
+                           Grid.Row="4" Grid.Column="0"
+                               IsVisible="{Binding EnableBuy}"
+                               IsEnabled="{Binding EnableBuy}"/>
+                        <Label Text="{Binding NumberOfBuy}" Margin="5"
+                           Grid.Row="4" Grid.Column="1"
+                                FontAttributes="Bold"
+                               IsVisible="{Binding EnableBuy}"
+                               IsEnabled="{Binding EnableBuy}"/>
+
+                        <Label Text="{xct:Translate NumberOfAttachText}" Margin="5"
+                           Grid.Row="5" Grid.Column="0"
+                               IsVisible="{Binding EnableAttach}"
+                               IsEnabled="{Binding EnableAttach}"/>
+                        <Label Text="{Binding NumberOfAttach}" Margin="5"
+                           Grid.Row="5" Grid.Column="1"
+                                FontAttributes="Bold" 
+                               IsVisible="{Binding EnableAttach}"
+                               IsEnabled="{Binding EnableAttach}"/>
+
+                        <Label Text="{xct:Translate NumberOfAttackText}" Margin="5"
+                           Grid.Row="6" Grid.Column="0"
+                                IsVisible="{Binding EnableAttack}"
+                               IsEnabled="{Binding EnableAttack}"/>
+                        <Label Text="{Binding NumberOfAttack}" Margin="5"
+                           Grid.Row="6" Grid.Column="1"
+                                FontAttributes="Bold"
+                                IsVisible="{Binding EnableAttack}"
+                               IsEnabled="{Binding EnableAttack}"/>
+
+                        <Label Text="{xct:Translate NextRisingText} " Margin="5"
+                           Grid.Row="7" Grid.Column="0"/>
+                        <Label Text="{Binding NextRising}" Margin="5"
+                           Grid.Row="7" Grid.Column="1"
+                                FontAttributes="Bold"                               
+                                TextDecorations="Underline"/>
+
+                        <Image Source="{Binding DiceImageSource}"
+                               Grid.Row="8"
+                               Grid.Column="0" Grid.ColumnSpan="2"
+                               IsVisible="{Binding DiceVisible}"
+                               VerticalOptions="Center"
+                               HorizontalOptions="Center"
+                               Margin="35"/>
+
+                        <StackLayout Grid.Row="9"
+                                     Grid.ColumnSpan="2"
+                                         Grid.Column="0"
+                                     Margin="5" Orientation="Horizontal"
+                                     HorizontalOptions="Center"
+                                     VerticalOptions="End">
+                            
+                            <ImageButton x:Name="imgRestart"
+                                         Source="{Binding RestartImgButtonSource}"
+                                         Command="{Binding RestartCommand}"
+                                         BorderColor="White"                                       
+                                         BorderWidth="0"/>
+                            
+                            <ImageButton Source="{Binding  StartStopImgButtonSource}"
+                                         Command="{Binding StartStopCommand}"
+                                         BorderColor="White"
+                                         BorderWidth="0"/>
+                       
+                        </StackLayout  >
+
+
+
+
+
+
+                    </Grid>
+
+
+                </StackLayout>
+            </controls:ContentButton>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

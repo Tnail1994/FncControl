@@ -1,0 +1,207 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="FncControl.Views.SettingsPage"
+             Title="Settings"
+             xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+             Background="#0c0c0c">
+    <!--Background="#0c0c0c"-->
+                             
+    <ContentPage.Content>
+        <ScrollView>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition  Width="244"/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition Width="61"/>
+                </Grid.ColumnDefinitions>
+
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition Height="10"/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+
+                <StackLayout Grid.Column="0" Grid.ColumnSpan="3">
+                    <StackLayout Orientation="Horizontal"
+                             Margin="7.1">
+                        <Image Source="clock-time-five-outline.png"/>
+                        <Label
+                   Text="{xct:Translate TimeControlText}"
+                        VerticalOptions="Center"
+                        VerticalTextAlignment="Center"
+                   FontSize="Large"/>
+                    </StackLayout>
+                    <BoxView HeightRequest="2.5" 
+                         BackgroundColor="{StaticResource Primary}"
+                         Margin="7.1,0,7.1,0"/>
+                </StackLayout>
+
+                <Label Text="{xct:Translate EnableTimeControlText}"
+                   Grid.Row="1" Grid.Column="0"
+                       Margin="14.2,7.1,0,0"
+                       VerticalTextAlignment="Center"/>
+                <CheckBox x:Name="checkBox_enableTimeControl" 
+                      Grid.Row="1" Grid.Column="1"
+                      IsChecked="{Binding TimeOn}"
+                          Margin="0,7.1,0,0"
+                          HorizontalOptions="Center"/>
+
+                <Label Text="{xct:Translate TimePlayer1}" 
+                   Grid.Row="2" Grid.Column="0" 
+                   IsEnabled="{Binding TimeOn}"
+                       Margin="14.2,0,0,0"
+                       VerticalTextAlignment="Center"/>
+                <Picker ItemsSource="{Binding PlayerTimes}"                    
+                    SelectedItem="{Binding MaxPlayerTime1}" 
+                    Grid.Row="2" Grid.Column="1"
+                    IsEnabled="{Binding TimeOn}"
+                        HorizontalTextAlignment="Center"
+                        SelectedIndexChanged="MaxPlayerTimePicker1_SelectionChanged" />
+
+
+                <ImageButton Grid.Column="2"
+                             Rotation="-45"
+                             Grid.RowSpan="3"
+                             Grid.Row="2"
+                             WidthRequest="22"
+                             HeightRequest="22"
+                    Source="{Binding LinkTimesButtonImg}"
+                             IsEnabled="{Binding TimeOn}"
+                             Command="{Binding LinkTimesCommand}"
+                             HorizontalOptions="Start"
+                             VerticalOptions="Center"/>
+
+                <Label Text="{xct:Translate TimePlayer2}" 
+                   Grid.Row="4" Grid.Column="0" 
+                   IsEnabled="{Binding TimeOn}"
+                       Margin="14.2,0,0,0"
+                       VerticalTextAlignment="Center"/>
+                <Picker ItemsSource="{Binding PlayerTimes}"                    
+                    SelectedItem="{Binding MaxPlayerTime2}" 
+                    Grid.Row="4" Grid.Column="1" 
+                        HorizontalTextAlignment="Center"
+                    IsEnabled="{Binding TimeOn}"
+                         SelectedIndexChanged="MaxPlayerTimePicker2_SelectionChanged" />
+
+            
+                
+                
+
+                <StackLayout Grid.Column="0" Grid.ColumnSpan="3"
+                             Grid.Row="5">
+                    <StackLayout Orientation="Horizontal"
+                             Margin="7.1">
+                        <Image Source="puzzlesmall.png"/>
+                        <Label
+                   Text="{xct:Translate GameBehaviorText}"
+                        VerticalOptions="Center"
+                        VerticalTextAlignment="Center"
+                   FontSize="Large"/>
+                    </StackLayout>
+                    <BoxView HeightRequest="2.5" 
+                         BackgroundColor="{StaticResource Primary}"
+                         Margin="7.1,0,7.1,0"/>
+                </StackLayout>
+
+
+                <Label Text="{xct:Translate EnableDraw}" 
+                   Grid.Row="6" Grid.Column="0"
+                       Margin="14.2,7.1,0,0"
+                       VerticalTextAlignment="Center"/>
+                <CheckBox x:Name="checkBox_enableDrawing"
+                      Grid.Row="6" Grid.Column="1" 
+                          Margin="0,7.1,0,0"
+                           HorizontalOptions="Center"
+                      IsChecked="{Binding EnableDrawing}"/>
+
+                <Label Text="{xct:Translate EnableSpell}" 
+                       Margin="14.2,0,0,0"
+                   Grid.Row="7" Grid.Column="0"
+                       VerticalTextAlignment="Center"/>
+                <CheckBox x:Name="checkBox_enableMagic"
+                      Grid.Row="7" Grid.Column="1" 
+                           HorizontalOptions="Center"
+                      IsChecked="{Binding EnableMagic}"/>
+
+                <Label Text="{xct:Translate EnableSummon}" 
+                       Margin="14.2,0,0,0"
+                   Grid.Row="8" Grid.Column="0" 
+                       VerticalTextAlignment="Center"/>
+                <CheckBox x:Name="checkBox_enableSummon"  
+                      Grid.Row="8" Grid.Column="1" 
+                           HorizontalOptions="Center"
+                      IsChecked="{Binding EnableSummon}"/>
+
+                <Label Text="{xct:Translate EnableBuy}" 
+                       Margin="14.2,0,0,0"
+                   Grid.Row="9" Grid.Column="0"
+                       VerticalTextAlignment="Center"/>
+                <CheckBox x:Name="checkBox_enableBuy" 
+                       Grid.Row="9" Grid.Column="1" 
+                           HorizontalOptions="Center"
+                      IsChecked="{Binding EnableBuy}"/>
+
+                <Label Text="{xct:Translate EnableAttach}" 
+                       Margin="14.2,0,0,0"
+                   Grid.Row="10" Grid.Column="0"
+                       VerticalTextAlignment="Center"/>
+                <CheckBox x:Name="checkBox_enableAttach" 
+                       Grid.Row="10" Grid.Column="1" 
+                           HorizontalOptions="Center"
+                      IsChecked="{Binding EnableAttach}"/>
+
+                <Label Text="{xct:Translate EnableAttack}"
+                       Margin="14.2,0,0,0"
+                   Grid.Row="11" Grid.Column="0"
+                       VerticalTextAlignment="Center"/>
+                <CheckBox x:Name="checkBox_enableAttack" 
+                       Grid.Row="11" Grid.Column="1" 
+                           HorizontalOptions="Center"
+                      IsChecked="{Binding EnableAttack}"/>
+
+
+                <StackLayout Grid.Column="0" Grid.ColumnSpan="3"
+                             Grid.Row="12">
+                    <StackLayout Orientation="Horizontal"
+                             Margin="7.1">
+                        <Image Source="puzzlesmall.png"/>
+                        <Label
+                   Text="{xct:Translate InterfaceText}"
+                        VerticalOptions="Center"
+                        VerticalTextAlignment="Center"
+                   FontSize="Large"/>
+                    </StackLayout>
+                    <BoxView HeightRequest="2.5" 
+                         BackgroundColor="{StaticResource Primary}"
+                         Margin="7.1,0,7.1,0"/>
+                </StackLayout>
+
+                <Label Text="{xct:Translate LanguageText}"
+                       Margin="14.2,0,0,0"
+                   Grid.Row="13" Grid.Column="0"
+                       VerticalTextAlignment="Center"/>
+                <Picker Grid.Row="13" Grid.Column="1"
+                         HorizontalOptions="Center"
+                        SelectedItem="{Binding CurrentLanguage}"                        
+                        ItemsSource="{Binding AvailableLanguages}"
+                        ItemDisplayBinding="{Binding Name}"
+                        SelectedIndexChanged="LanguagePicker_SelectionChanged"/>
+
+
+
+
+            </Grid>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

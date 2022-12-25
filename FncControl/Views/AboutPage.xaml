@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="FncControl.Views.AboutPage"
+             xmlns:vm="clr-namespace:FncControl.ViewModels"
+             xmlns:behavoirs="clr-namespace:Basil.Behaviors.Animations.Standart;assembly=Basil.Behaviors"
+             xmlns:behavoirs1="clr-namespace:Basil.Behaviors.Events;assembly=Basil.Behaviors"             
+             xmlns:h="clr-namespace:Basil.Behaviors.Events.Handlers;assembly=Basil.Behaviors"
+             Title="{Binding Title}" >
+    <ContentPage.Behaviors>
+        <behavoirs1:EventToMultipleHandlersBehavior EventName="Appearing" >
+            <h:ParallelHandlerExecutor>
+                <h:SequenceHandlerExecutor>
+                    <behavoirs:FadeAnimation Length="500" Opacity="0" Target="{x:Reference BackgroundImg}" />
+                    <behavoirs:FadeAnimation Length="500" Opacity="1" Target="{x:Reference BackgroundImg}" />
+                </h:SequenceHandlerExecutor>
+                <h:SequenceHandlerExecutor>
+                    <behavoirs:RotateXAnimation Length="650" RotationX="80" Easing="{x:Static Easing.BounceIn}" Target="{x:Reference BackgroundImg}" />
+                    <behavoirs:RotateXAnimation Length="650" RotationX="0" Easing="{x:Static Easing.BounceOut}" Target="{x:Reference BackgroundImg}" />
+                </h:SequenceHandlerExecutor>
+                <!--<h:SequenceHandlerExecutor>
+                    <behavoirs:LayoutAnimation Length="200" OffsetRectangle="-10,15,20,-30" Target="{x:Reference BackgroundImg}"/>
+                    <behavoirs:LayoutAnimation Length="200" OffsetRectangle="10,-15,-20,30" Target="{x:Reference BackgroundImg}"/>
+                </h:SequenceHandlerExecutor>-->
+            </h:ParallelHandlerExecutor>
+        </behavoirs1:EventToMultipleHandlersBehavior>
+    </ContentPage.Behaviors>
+    <ContentPage.BindingContext>
+        <vm:AboutViewModel />
+    </ContentPage.BindingContext>
+
+    <Image  Source="HintergrundCard.png" x:Name="BackgroundImg"/>
+
+  
+
+</ContentPage>
